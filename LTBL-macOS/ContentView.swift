@@ -10,8 +10,30 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        let device: LTBLDevice = LTBLDevice()
+
+        device.IPAddr = "192.168.1.49"
+
+        device.getHomePage()
+
+        return VStack {
+            Text("ESP8266 Web Server - LTBL")
+            Spacer()
+
+            Button(action: {
+                device.turnOn()
+            }) {
+                // How the button looks like
+                Text("Turn ON")
+            }
+
+            Button(action: {
+                device.turnOff()
+            }) {
+                // How the button looks like
+                Text("Turn OFF")
+            }
+        }
     }
 }
 
