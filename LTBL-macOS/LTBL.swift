@@ -33,51 +33,104 @@ fileprivate func parseState(pStr: String) -> LTBLState {
 /**
  * @class This class represents a LTBL device.
  */
-class LTBLDevice {
-    var state: LTBLState = LTBLState.LTBL_UNKNOWN_STATE;
-    var IPAddr: String?;
+public class LTBLDevice: ObservableObject {
+    @Published var state: LTBLState = LTBLState.LTBL_UNKNOWN_STATE
+    var IPAddr: String?
+
+    init(_ pIPAddr: String) {
+        IPAddr = pIPAddr
+    }
 
     func getHomePage() -> Void {
+        var lDataString: String = ""
+
         let url = URL(string: "http://" + IPAddr!)!
-        let urlSession: URLSession = URLSession.shared;
+        let urlSession: URLSession = URLSession.shared
         let urlSessionTask: URLSessionDataTask = urlSession.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                print("[DEBUG] <LTBLDevice::getHomePage> Data = ", data as Any)
-                print("[DEBUG] <LTBLDevice::getHomePage> Response = ", response as Any)
-                print("[DEBUG] <LTBLDevice::getHomePage> Error = ", error as Any)
-            });
+            print("[DEBUG] <LTBLDevice::getHomePage> Data = ", data as Any)
+            print("[DEBUG] <LTBLDevice::getHomePage> Response = ", response as Any)
+            print("[DEBUG] <LTBLDevice::getHomePage> Error = ", error as Any)
 
-        urlSessionTask.resume();
+            if(nil != data) {
+                lDataString = String(data: data!, encoding: .utf8)!
+                print("[DEBUG] <LTBLDevice::getHomePage> lDataString = ", lDataString)
+
+                DispatchQueue.main.async {
+                    self.state = parseState(pStr: lDataString)
+                }
+            }
+        })
+
+        urlSessionTask.resume()
     }
 
-    func toggle() {
-        //
-    }
+    func turnOn() -> Void {
+        var lDataString: String = ""
 
-    func switchState(pState: LTBLState) {
-        //
-    }
-
-    func turnOn() {
         let url = URL(string: "http://" + IPAddr! + "/on")!
-        let urlSession: URLSession = URLSession.shared;
+        let urlSession: URLSession = URLSession.shared
         let urlSessionTask: URLSessionDataTask = urlSession.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                print("[DEBUG] <LTBLDevice::getHomePage> Data = ", data as Any)
-                print("[DEBUG] <LTBLDevice::getHomePage> Response = ", response as Any)
-                print("[DEBUG] <LTBLDevice::getHomePage> Error = ", error as Any)
-            });
+            print("[DEBUG] <LTBLDevice::getHomePage> Data = ", data as Any)
+            print("[DEBUG] <LTBLDevice::getHomePage> Response = ", response as Any)
+            print("[DEBUG] <LTBLDevice::getHomePage> Error = ", error as Any)
 
-        urlSessionTask.resume();
+            if(nil != data) {
+                lDataString = String(data: data!, encoding: .utf8)!
+                print("[DEBUG] <LTBLDevice::getHomePage> lDataString = ", lDataString)
+
+                DispatchQueue.main.async {
+                    self.state = parseState(pStr: lDataString)
+                }
+            }
+        })
+
+        urlSessionTask.resume()
     }
 
-    func turnOff() {
-        let url = URL(string: "http://" + IPAddr! + "/off")!
-        let urlSession: URLSession = URLSession.shared;
-        let urlSessionTask: URLSessionDataTask = urlSession.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                print("[DEBUG] <LTBLDevice::getHomePage> Data = ", data as Any)
-                print("[DEBUG] <LTBLDevice::getHomePage> Response = ", response as Any)
-                print("[DEBUG] <LTBLDevice::getHomePage> Error = ", error as Any)
-            });
+    func turnOff() -> Void {
+        var lDataString: String = ""
 
-        urlSessionTask.resume();
+        let url = URL(string: "http://" + IPAddr! + "/off")!
+        let urlSession: URLSession = URLSession.shared
+        let urlSessionTask: URLSessionDataTask = urlSession.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            print("[DEBUG] <LTBLDevice::getHomePage> Data = ", data as Any)
+            print("[DEBUG] <LTBLDevice::getHomePage> Response = ", response as Any)
+            print("[DEBUG] <LTBLDevice::getHomePage> Error = ", error as Any)
+
+            if(nil != data) {
+                lDataString = String(data: data!, encoding: .utf8)!
+                print("[DEBUG] <LTBLDevice::getHomePage> lDataString = ", lDataString)
+
+                DispatchQueue.main.async {
+                    self.state = parseState(pStr: lDataString)
+                }
+            }
+        })
+
+        urlSessionTask.resume()
+    }
+
+    func toggle() -> Void {
+        switch(self.state) {
+        case LTBLState.LTBL_ON:
+            self.turnOff()
+        case LTBLState.LTBL_OFF:
+            self.turnOn()
+        default:
+            /* Do nothing */
+            return
+        }
+    }
+
+    func switchState(_ pState: LTBLState) -> Void {
+        switch(pState) {
+        case LTBLState.LTBL_ON:
+            self.turnOn()
+        case LTBLState.LTBL_OFF:
+            self.turnOff()
+        default:
+            /* Do nothing */
+            return
+        }
     }
 }
