@@ -22,28 +22,24 @@ struct ContentView: View {
             Button(action: {
                 self.device.turnOn()
             }) {
-                // How the button looks like
                 Text("Turn ON")
             }
 
             Button(action: {
                 self.device.turnOff()
             }) {
-                // How the button looks like
                 Text("Turn OFF")
             }
 
             Button(action: {
                 self.device.toggle()
             }) {
-                // How the button looks like
                 Text("Toggle")
             }
 
             Button(action: {
                 self.device.getHomePage()
             }) {
-                // How the button looks like
                 Text("Home Page")
             }
         }
