@@ -7,10 +7,10 @@ struct LTBL_swift_hello_world {
 /**
  * @brief Different states the LTBL device can be in.
  */
-enum LTBLState {
-    case LTBL_UNKNOWN_STATE
-    case LTBL_ON
-    case LTBL_OFF
+enum LTBLState: String {
+    case LTBL_UNKNOWN_STATE = "unknown"
+    case LTBL_ON = "on"
+    case LTBL_OFF = "off"
 }
 
 /**
