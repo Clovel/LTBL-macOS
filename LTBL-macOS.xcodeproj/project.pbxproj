@@ -63,8 +63,8 @@
 				87734D0723EF147700C58F19 /* Main.storyboard */,
 				87734D0A23EF147700C58F19 /* Info.plist */,
 				87734D0B23EF147700C58F19 /* LTBL_macOS.entitlements */,
-				87734D0423EF147700C58F19 /* Preview Content */,
 				87734D2423EF25D700C58F19 /* LTBL.swift */,
+				87734D0423EF147700C58F19 /* Preview Content */,
 			);
 			path = "LTBL-macOS";
 			sourceTree = "<group>";
@@ -148,8 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87734D0123EF147100C58F19 /* ContentView.swift in Sources */,
 				87734D2523EF25D700C58F19 /* LTBL.swift in Sources */,
+				87734D0123EF147100C58F19 /* ContentView.swift in Sources */,
 				87734CFF23EF147100C58F19 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
