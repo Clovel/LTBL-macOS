@@ -14,10 +14,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
 
+    var device: LTBLDevice!
+
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+
+        /* Setup a LTBL device */
+        device = LTBLDevice("192.168.1.49")
+
+        /* Get home page to update the LTBL state the first time */
+        device.getHomePage()
+
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        let contentView = ContentView().environmentObject(device)
 
         // Create the window and set the content view. 
         window = NSWindow(

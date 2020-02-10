@@ -9,37 +9,51 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var device: LTBLDevice
+
     var body: some View {
-        let device: LTBLDevice = LTBLDevice()
-
-        device.IPAddr = "192.168.1.49"
-
-        device.getHomePage()
-
         return VStack {
             Text("ESP8266 Web Server - LTBL")
+
+            Text(device.state.rawValue)
+
             Spacer()
 
             Button(action: {
-                device.turnOn()
+                self.device.turnOn()
             }) {
                 // How the button looks like
                 Text("Turn ON")
             }
 
             Button(action: {
-                device.turnOff()
+                self.device.turnOff()
             }) {
                 // How the button looks like
                 Text("Turn OFF")
+            }
+
+            Button(action: {
+                self.device.toggle()
+            }) {
+                // How the button looks like
+                Text("Toggle")
+            }
+
+            Button(action: {
+                self.device.getHomePage()
+            }) {
+                // How the button looks like
+                Text("Home Page")
             }
         }
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
+#if DEBUG
+struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+#endif
