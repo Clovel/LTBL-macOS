@@ -12,8 +12,33 @@
 		87734D0323EF147700C58F19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87734D0223EF147700C58F19 /* Assets.xcassets */; };
 		87734D0623EF147700C58F19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87734D0523EF147700C58F19 /* Preview Assets.xcassets */; };
 		87734D0923EF147700C58F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87734D0723EF147700C58F19 /* Main.storyboard */; };
-		87734D2523EF25D700C58F19 /* LTBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87734D2423EF25D700C58F19 /* LTBL.swift */; };
+		87E118F023F202550041A4C1 /* LTBL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E118ED23F200410041A4C1 /* LTBL.framework */; };
+		87E118F123F202550041A4C1 /* LTBL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87E118ED23F200410041A4C1 /* LTBL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87E118EC23F200410041A4C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87E118E123F1FEF60041A4C1 /* LTBL-swift-fw.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 87E118CA23F1FAC50041A4C1;
+			remoteInfo = LTBL;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87E118E023F1FB520041A4C1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				87E118F123F202550041A4C1 /* LTBL.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		87734CFB23EF147100C58F19 /* LTBL-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LTBL-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,7 +49,7 @@
 		87734D0823EF147700C58F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87734D0A23EF147700C58F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87734D0B23EF147700C58F19 /* LTBL_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LTBL_macOS.entitlements; sourceTree = "<group>"; };
-		87734D2423EF25D700C58F19 /* LTBL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTBL.swift; sourceTree = "<group>"; };
+		87E118E123F1FEF60041A4C1 /* LTBL-swift-fw.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "LTBL-swift-fw.xcodeproj"; path = "lib/LTBL-swift-fw/LTBL-swift-fw.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E118F023F202550041A4C1 /* LTBL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +67,10 @@
 		87734CF223EF147100C58F19 = {
 			isa = PBXGroup;
 			children = (
+				87E118E123F1FEF60041A4C1 /* LTBL-swift-fw.xcodeproj */,
 				87734CFD23EF147100C58F19 /* LTBL-macOS */,
 				87734CFC23EF147100C58F19 /* Products */,
+				87E118DD23F1FB520041A4C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,7 +91,6 @@
 				87734D0723EF147700C58F19 /* Main.storyboard */,
 				87734D0A23EF147700C58F19 /* Info.plist */,
 				87734D0B23EF147700C58F19 /* LTBL_macOS.entitlements */,
-				87734D2423EF25D700C58F19 /* LTBL.swift */,
 				87734D0423EF147700C58F19 /* Preview Content */,
 			);
 			path = "LTBL-macOS";
@@ -77,6 +104,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		87E118DD23F1FB520041A4C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		87E118E923F200400041A4C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87E118ED23F200410041A4C1 /* LTBL.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,6 +129,7 @@
 				87734CF723EF147100C58F19 /* Sources */,
 				87734CF823EF147100C58F19 /* Frameworks */,
 				87734CF923EF147100C58F19 /* Resources */,
+				87E118E023F1FB520041A4C1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +166,28 @@
 			mainGroup = 87734CF223EF147100C58F19;
 			productRefGroup = 87734CFC23EF147100C58F19 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 87E118E923F200400041A4C1 /* Products */;
+					ProjectRef = 87E118E123F1FEF60041A4C1 /* LTBL-swift-fw.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				87734CFA23EF147100C58F19 /* LTBL-macOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		87E118ED23F200410041A4C1 /* LTBL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LTBL.framework;
+			remoteRef = 87E118EC23F200410041A4C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		87734CF923EF147100C58F19 /* Resources */ = {
@@ -148,7 +207,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87734D2523EF25D700C58F19 /* LTBL.swift in Sources */,
 				87734D0123EF147100C58F19 /* ContentView.swift in Sources */,
 				87734CFF23EF147100C58F19 /* AppDelegate.swift in Sources */,
 			);

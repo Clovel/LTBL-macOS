@@ -6,6 +6,8 @@
 //  Copyright © 2020 Clovis Durand. All rights reserved.
 //
 
+import LTBL
+
 import SwiftUI
 
 struct ContentView: View {
