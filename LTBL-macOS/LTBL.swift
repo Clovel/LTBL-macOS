@@ -13,6 +13,23 @@ enum LTBLState: String {
     case LTBL_OFF = "off"
 }
 
+fileprivate func parseState(pStr: String) -> LTBLState {
+    let lMatch = pStr.range(of: #"State (ON|OFF)"#, options: .regularExpression)
+
+    if(nil != lMatch) {
+        switch(pStr[lMatch!]) {
+        case "State ON":
+            return LTBLState.LTBL_ON
+        case "State OFF":
+            return LTBLState.LTBL_OFF
+        default:
+            return LTBLState.LTBL_UNKNOWN_STATE
+        }
+    } else {
+        return LTBLState.LTBL_UNKNOWN_STATE
+    }
+}
+
 /**
  * @class This class represents a LTBL device.
  */
