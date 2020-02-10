@@ -1,0 +1,3 @@
+[submodule "lib/LTBL-swift-fw"]
+	path = lib/LTBL-swift-fw
+	url = https://github.com/Clovel/LTBL-swift-fw.git
